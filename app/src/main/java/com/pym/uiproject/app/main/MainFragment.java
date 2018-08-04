@@ -1,33 +1,40 @@
 package com.pym.uiproject.app.main;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.pym.uiproject.R;
 import com.pym.uiproject.app.message.MsgFragment;
+import com.pym.uiproject.app.showapi.ui.NewFragment;
 import com.pym.uiproject.base.BindingFragment;
+import com.pym.uiproject.base.PopFragmentEvent;
+import com.pym.uiproject.base.PopToFragmentEvent;
+import com.pym.uiproject.base.RxBus;
+import com.pym.uiproject.base.StartFragmentEvent;
+import com.pym.uiproject.base.StartFragmentWithPopEvent;
 import com.pym.uiproject.databinding.FragMainBinding;
 import com.pym.uiproject.widget.BottomNavigationViewHelper;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import me.yokeyword.fragmentation.SupportFragment;
 
-public class MainFragment extends BindingFragment<FragMainBinding>  {
 
-    private BottomNavigationView bottomNavigationView;
-    private ViewPager viewPager;
+public class MainFragment extends BindingFragment<FragMainBinding> {
     private MenuItem menuItem;
+    private boolean isResumed;
+    private StartFragmentEvent startFragmentEvent;
+    private StartFragmentWithPopEvent startFragmentWithPopEvent;
+    private PopFragmentEvent popFragmentEvent;
+    private PopToFragmentEvent popToFragmentEvent;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_main, null);
-        return view;
+    public static MainFragment newInstance() {
+        return new MainFragment();
     }
 
     @Override
@@ -37,40 +44,31 @@ public class MainFragment extends BindingFragment<FragMainBinding>  {
 
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
-
-    }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        bottomNavigationView = (BottomNavigationView) view.findViewById(R.id.bottom_navigation);
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(
+        BottomNavigationViewHelper.disableShiftMode(binding.bottomNavigation);
+        binding.bottomNavigation.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.item_news:
-                                viewPager.setCurrentItem(0);
+                                binding.viewpager.setCurrentItem(0);
                                 break;
                             case R.id.item_lib:
-                                viewPager.setCurrentItem(1);
+                                binding.viewpager.setCurrentItem(1);
                                 break;
                             case R.id.item_find:
-                                viewPager.setCurrentItem(2);
+                                binding.viewpager.setCurrentItem(2);
                                 break;
                             case R.id.item_more:
-                                viewPager.setCurrentItem(3);
+                                binding.viewpager.setCurrentItem(3);
                                 break;
                         }
                         return false;
                     }
                 });
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        binding.viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -81,9 +79,9 @@ public class MainFragment extends BindingFragment<FragMainBinding>  {
                 if (menuItem != null) {
                     menuItem.setChecked(false);
                 } else {
-                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                    binding.bottomNavigation.getMenu().getItem(0).setChecked(false);
                 }
-                menuItem = bottomNavigationView.getMenu().getItem(position);
+                menuItem = binding.bottomNavigation.getMenu().getItem(position);
                 menuItem.setChecked(true);
             }
 
@@ -91,18 +89,86 @@ public class MainFragment extends BindingFragment<FragMainBinding>  {
             public void onPageScrollStateChanged(int state) {
             }
         });
-        setupViewPager(viewPager);
-
-
+        setupViewPager(binding.viewpager);
+        subscribeEvent();
     }
-
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter.addFragment(new HomeFragment());
         adapter.addFragment(new MsgFragment());
-        adapter.addFragment(new MsgFragment());
-        adapter.addFragment(new MsgFragment());
-        adapter.addFragment(new MsgFragment());
+        adapter.addFragment(new NewFragment());
+        adapter.addFragment(new NewFragment());
         viewPager.setAdapter(adapter);
     }
+
+    private void subscribeEvent() {
+        RxBus.get().toObservable(StartFragmentEvent.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(mCompositeDisposable::add)
+                .subscribe(event -> {
+                    if (isResumed) {
+                        start(event.targetFragment, SupportFragment.SINGLETASK);
+                    } else {
+                        this.startFragmentEvent = event;
+                    }
+                });
+        RxBus.get().toObservable(StartFragmentWithPopEvent.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(mCompositeDisposable::add)
+                .subscribe(event -> {
+                    if (isResumed) {
+                        startWithPop(event.targetFragment);
+                    } else {
+                        this.startFragmentWithPopEvent = event;
+                    }
+                });
+        RxBus.get().toObservable(PopFragmentEvent.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(mCompositeDisposable::add)
+                .subscribe(event -> {
+                    if (isResumed) {
+                        pop();
+                    } else {
+                        this.popFragmentEvent = event;
+                    }
+                });
+        RxBus.get().toObservable(PopToFragmentEvent.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(mCompositeDisposable::add)
+                .subscribe(event -> {
+                    if (isResumed) {
+                        popTo(event.clazz, event.includeTargetFragment);
+                    } else {
+                        this.popToFragmentEvent = event;
+                    }
+                });
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        isResumed = true;
+        if (startFragmentEvent != null) {
+            start(startFragmentEvent.targetFragment);
+            startFragmentEvent = null;
+        } else if (startFragmentWithPopEvent != null) {
+            startWithPop(startFragmentWithPopEvent.targetFragment);
+            startFragmentWithPopEvent = null;
+        } else if (popFragmentEvent != null) {
+            pop();
+            popFragmentEvent = null;
+        } else if (popToFragmentEvent != null) {
+            popTo(popToFragmentEvent.clazz, popToFragmentEvent.includeTargetFragment);
+            popFragmentEvent = null;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isResumed = false;
+    }
+
 }

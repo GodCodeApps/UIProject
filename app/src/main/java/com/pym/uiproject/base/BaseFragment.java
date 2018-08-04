@@ -11,14 +11,14 @@ import com.pym.uiproject.service.base.DataLayer;
 
 import javax.inject.Inject;
 import io.reactivex.disposables.CompositeDisposable;
-import me.yokeyword.fragmentation.SupportFragment;
+import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 /**
  * BaseFragment
  *
  * @author Peng YanMing 2016/12/30  2016/12/30
  */
-public abstract class BaseFragment extends SupportFragment {
+public abstract class BaseFragment extends SwipeBackFragment {
     @Inject
     DataLayer mDataLayer;
     @Inject
@@ -29,7 +29,6 @@ public abstract class BaseFragment extends SupportFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getLayoutId(), container, false);
     }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ApplicationComponent.Instance.get().inject(this);

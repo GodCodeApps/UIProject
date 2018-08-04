@@ -23,7 +23,6 @@ public class App extends Application {
         PlayerConfig.setUseDefaultNetworkEventProducer(true);
         //初始化库
         PlayerLibrary.init(this);
-//        DbCore.init(this);
     }
 
     private void initDagger() {

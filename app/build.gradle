@@ -53,6 +53,7 @@ dependencies {
     //    compile rootProject.ext.libSupportPercent
     //    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation rootProject.ext.libFragmentation
+    implementation rootProject.ext.libFragmentationSwipeBack
     implementation rootProject.ext.libRxJava
     implementation rootProject.ext.libRxAndroid
     implementation rootProject.ext.libRxPermissions

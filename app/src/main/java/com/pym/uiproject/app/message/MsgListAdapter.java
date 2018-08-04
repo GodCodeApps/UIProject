@@ -40,7 +40,6 @@ public class MsgListAdapter extends RecyclerView.Adapter<MsgListAdapter.MsgViewH
         holder.dataBinding.setVariable(BR.item5, newsList.get(position).getPics());
         holder.dataBinding.executePendingBindings();
 
-
     }
 
     @Override

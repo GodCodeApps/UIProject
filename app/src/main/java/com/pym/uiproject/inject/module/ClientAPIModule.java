@@ -35,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ClientAPIModule {
 
 private static final String BASE_URL = "http://display.miguvideo.com/display/";
-//    private static final String BASE_URL = "http://crystal2.miguvideo.com/legacy/shm_video_interface/";
+//    private static final String BASE_URL = "http://route.showapi.com/109-35/";
 
     /**
      * 创建一个ClientAPI的实现类单例对象

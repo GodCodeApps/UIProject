@@ -27,8 +27,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:headUrl="@{item5.highResolutionV}" />
+            android:scaleType="fitXY"
+            app:imageUrl="@{item5.highResolutionV}" />
         </FrameLayout>
         <TextView
             android:layout_width="match_parent"

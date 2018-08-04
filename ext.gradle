@@ -41,6 +41,7 @@ ext {
     libFragmentation = "me.yokeyword:fragmentation:${fragmentationVersion}"
     libFragmentationSwipeBack = "me.yokeyword:fragmentation-swipeback:${fragmentationVersion}"
 
+
     libRxJava = "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
     libRxAndroid = "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
     libRxPermissions = "com.tbruyelle.rxpermissions2:rxpermissions:${rxPermissionsVersion}"
