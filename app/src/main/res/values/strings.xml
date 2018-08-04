@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UIProject</string>
+    <string name="app_name">汇聚焦点</string>
     <string name="bye_burger_bottom_behavior">com.pym.uiproject.widget.ByeBurgerBottomBehavior</string>
 
     <!-- 下拉刷新 -->

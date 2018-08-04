@@ -71,7 +71,7 @@ private static String channelId="";
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            final String res = new ShowApiRequest("http://route.showapi.com/109-35", "71528", "60e603bd86014b2c85c4873bbea7e200")
+            final String res = new ShowApiRequest("http://route.showapi.com/109-35", "71701", "a8b6c586636144ed96b9579baaa3d724")
                     .addTextPara("channelId", channelId)
                     .addTextPara("channelName", "")
                     .addTextPara("title", "")

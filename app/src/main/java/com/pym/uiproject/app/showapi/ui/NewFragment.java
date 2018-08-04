@@ -61,18 +61,20 @@ public class NewFragment extends BindingFragment<FragNewMainBinding> {
             super.handleMessage(msg);
             NewBean newBean = (NewBean) msg.obj;
             List<NewBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> contentlist = newBean.getShowapi_res_body().getPagebean().getContentlist();
+         if(contentlist!=null&&contentlist.size()>0){
             results.clear();
             results.addAll(contentlist);
             bigImageAdapter.notifyDataSetChanged();
             Log.i("请求结果", "请求结果:" + newBean.toString());
             binding.refreshLayout.setRefreshing(false);
             binding.recycler.loading = false;
+         }
         }
     };
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            final String res = new ShowApiRequest("http://route.showapi.com/109-35", "71528", "60e603bd86014b2c85c4873bbea7e200")
+            final String res = new ShowApiRequest("http://route.showapi.com/109-35", "71701", "a8b6c586636144ed96b9579baaa3d724")
                     .addTextPara("channelId", "")
                     .addTextPara("channelName", "")
                     .addTextPara("title", "电影最新")
@@ -85,9 +87,12 @@ public class NewFragment extends BindingFragment<FragNewMainBinding> {
                     .post();
             Gson gson = new Gson();
             NewBean newBean = gson.fromJson(res, NewBean.class);
-            Message msg = new Message();
-            msg.obj = newBean;
-            handler.sendMessage(msg);
+            NewBean.ShowapiResBodyBean resBody = newBean.getShowapi_res_body();
+            if(resBody!=null&&resBody.getPagebean()!=null) {
+                Message msg = new Message();
+                msg.obj = newBean;
+                handler.sendMessage(msg);
+            }
         }
     };
 }

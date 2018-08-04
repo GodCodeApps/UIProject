@@ -65,15 +65,17 @@ public class HomeFragment extends BindingFragment<FragHomeBinding> {
             super.handleMessage(msg);
             NewTitle newTitle= (NewTitle) msg.obj;
             List<NewTitle.ShowapiResBodyBean.ChannelListBean> channelList = newTitle.getShowapi_res_body().getChannelList();
+            if(channelList!=null&&channelList.size()>0){
             list.clear();
             list.addAll(channelList);
             homePagerAdapter.notifyDataSetChanged();
+            }
         }
     };
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            final String res = new ShowApiRequest("http://route.showapi.com/109-34", "71528", "60e603bd86014b2c85c4873bbea7e200")
+            final String res = new ShowApiRequest("http://route.showapi.com/109-34", "71701", "a8b6c586636144ed96b9579baaa3d724")
                     .post();
             Gson gson = new Gson();
             NewTitle newBean = gson.fromJson(res, NewTitle.class);
