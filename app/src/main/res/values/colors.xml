@@ -12,4 +12,7 @@
     <color name="colorHolder04">#E0F7FA</color>
     <color name="colorHolder05">#E3F2FD</color>
     <color name="colorHolder06">#F3E5F5</color>
+
+    <color name="controller_bg_dark">#66000000</color>
+    <color name="controller_bg_light">#00000000</color>
 </resources>

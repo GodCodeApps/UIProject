@@ -19,6 +19,7 @@ public abstract class BindingFragment<T extends ViewDataBinding> extends BaseFra
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+//         return attachToSwipeBack(binding.getRoot()); // 侧滑返回
         return binding.getRoot();
     }
 

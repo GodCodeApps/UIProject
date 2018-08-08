@@ -62,7 +62,8 @@ public class MsgListAdapter extends RecyclerView.Adapter<MsgListAdapter.MsgViewH
                     RelationAssist mAssist = new RelationAssist( dataBinding.getRoot().getContext());
                     mAssist.getSuperContainer().setBackgroundColor(Color.BLACK);
                     DataSource dataSource = new DataSource();
-                    dataSource.setData("http://mgcdn.vod.mgspcloud.migucloud.com//vi1//564.10PyUMr50lUJ4tQjfJCPS.32.B48FqG.mp4?");
+//                    dataSource.setData("http://mgcdn.vod.mgspcloud.migucloud.com//vi1//564.10PyUMr50lUJ4tQjfJCPS.32.B48FqG.mp4?");
+                    dataSource.setData("http://pull-hls-l6-hs.pstatp.com/live/stream-6586397847124445959_720p/index.m3u8");
                     dataSource.setTitle("神奇的珊瑚");
                     mAssist.setDataSource(dataSource);
                     mAssist.attachContainer(dataBinding.getRoot().findViewById(R.id.frameVideo));

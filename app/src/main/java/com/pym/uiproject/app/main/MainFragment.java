@@ -1,16 +1,14 @@
 package com.pym.uiproject.app.main;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.pym.uiproject.R;
-import com.pym.uiproject.app.message.MsgFragment;
+import com.pym.uiproject.app.playvideo.PlayVideoFragment;
 import com.pym.uiproject.app.showapi.ui.NewFragment;
 import com.pym.uiproject.base.BindingFragment;
 import com.pym.uiproject.base.PopFragmentEvent;
@@ -22,7 +20,6 @@ import com.pym.uiproject.databinding.FragMainBinding;
 import com.pym.uiproject.widget.BottomNavigationViewHelper;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import me.yokeyword.fragmentation.SupportFragment;
 
 
 public class MainFragment extends BindingFragment<FragMainBinding> {
@@ -54,14 +51,14 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
                             case R.id.item_news:
                                 binding.viewpager.setCurrentItem(0);
                                 break;
-                            case R.id.item_lib:
+//                            case R.id.item_lib:
+//                                binding.viewpager.setCurrentItem(1);
+//                                break;
+                            case R.id.item_find:
                                 binding.viewpager.setCurrentItem(1);
                                 break;
-                            case R.id.item_find:
-                                binding.viewpager.setCurrentItem(2);
-                                break;
                             case R.id.item_more:
-                                binding.viewpager.setCurrentItem(3);
+                                binding.viewpager.setCurrentItem(2);
                                 break;
                         }
                         return false;
@@ -96,9 +93,9 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new MsgFragment());
+//        adapter.addFragment(new MsgFragment());
         adapter.addFragment(new NewFragment());
-        adapter.addFragment(new NewFragment());
+        adapter.addFragment(new PlayVideoFragment());
         viewPager.setAdapter(adapter);
     }
 
@@ -108,7 +105,7 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
                 .doOnSubscribe(mCompositeDisposable::add)
                 .subscribe(event -> {
                     if (isResumed) {
-                        start(event.targetFragment, SupportFragment.SINGLETASK);
+                        start(event.targetFragment);
                     } else {
                         this.startFragmentEvent = event;
                     }

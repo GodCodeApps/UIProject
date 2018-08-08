@@ -10,6 +10,7 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.view.ViewConfiguration;
 
 import java.lang.reflect.Field;
@@ -51,7 +52,6 @@ public class DisplayUtil {
     public static int getScreenHeight() {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
     }
-
     public static int getStatusHeight() {
         int statusBarHeight = 0;
         try {

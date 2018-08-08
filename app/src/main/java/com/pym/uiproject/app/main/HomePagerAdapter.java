@@ -15,7 +15,7 @@ class HomePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return FirstFragment.newInstance(titleListBeans.get(position).getChannelId());
+        return FirstFragment.newInstance(titleListBeans.get(position).getName());
     }
 
     @Override

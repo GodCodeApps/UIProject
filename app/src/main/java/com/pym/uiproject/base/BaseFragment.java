@@ -11,6 +11,9 @@ import com.pym.uiproject.service.base.DataLayer;
 
 import javax.inject.Inject;
 import io.reactivex.disposables.CompositeDisposable;
+import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
+import me.yokeyword.fragmentation.anim.DefaultVerticalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 /**
@@ -34,7 +37,10 @@ public abstract class BaseFragment extends SwipeBackFragment {
         ApplicationComponent.Instance.get().inject(this);
         afterCreate(savedInstanceState);
     }
-
+    @Override
+    public FragmentAnimator onCreateFragmentAnimator() {
+        return new DefaultNoAnimator();
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

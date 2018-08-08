@@ -1,6 +1,7 @@
 package com.pym.uiproject.base;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.kk.taurus.playerbase.config.PlayerConfig;
 import com.kk.taurus.playerbase.config.PlayerLibrary;
@@ -16,6 +17,8 @@ import com.pym.uiproject.util.ImageLoader;
  */
 public class App extends Application {
 
+    public static  Context applicationContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -23,6 +26,7 @@ public class App extends Application {
         PlayerConfig.setUseDefaultNetworkEventProducer(true);
         //初始化库
         PlayerLibrary.init(this);
+        applicationContext = getApplicationContext();
     }
 
     private void initDagger() {
@@ -30,5 +34,9 @@ public class App extends Application {
                 .builder()
                 .applicationModule(new ApplicationModule(this))
                 .build());
+    }
+
+    public static Context get() {
+        return applicationContext;
     }
 }

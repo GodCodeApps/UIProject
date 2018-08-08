@@ -74,25 +74,25 @@ public class NewFragment extends BindingFragment<FragNewMainBinding> {
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            final String res = new ShowApiRequest("http://route.showapi.com/109-35", "71701", "a8b6c586636144ed96b9579baaa3d724")
-                    .addTextPara("channelId", "")
-                    .addTextPara("channelName", "")
-                    .addTextPara("title", "电影最新")
-                    .addTextPara("page", "1")
-                    .addTextPara("needContent", "0")
-                    .addTextPara("needHtml", "0")
-                    .addTextPara("needAllList", "0")
-                    .addTextPara("maxResult", "100")
-                    .addTextPara("id", "")
-                    .post();
-            Gson gson = new Gson();
-            NewBean newBean = gson.fromJson(res, NewBean.class);
-            NewBean.ShowapiResBodyBean resBody = newBean.getShowapi_res_body();
-            if(resBody!=null&&resBody.getPagebean()!=null) {
-                Message msg = new Message();
-                msg.obj = newBean;
-                handler.sendMessage(msg);
-            }
+//            final String res = new ShowApiRequest("http://route.showapi.com/109-35", "71701", "a8b6c586636144ed96b9579baaa3d724")
+//                    .addTextPara("channelId", "")
+//                    .addTextPara("channelName", "")
+//                    .addTextPara("title", "电影最新")
+//                    .addTextPara("page", "1")
+//                    .addTextPara("needContent", "0")
+//                    .addTextPara("needHtml", "0")
+//                    .addTextPara("needAllList", "0")
+//                    .addTextPara("maxResult", "100")
+//                    .addTextPara("id", "")
+//                    .post();
+//            Gson gson = new Gson();
+//            NewBean newBean = gson.fromJson(res, NewBean.class);
+//            NewBean.ShowapiResBodyBean resBody = newBean.getShowapi_res_body();
+//            if(resBody!=null&&resBody.getPagebean()!=null) {
+//                Message msg = new Message();
+//                msg.obj = newBean;
+//                handler.sendMessage(msg);
+//            }
         }
     };
 }

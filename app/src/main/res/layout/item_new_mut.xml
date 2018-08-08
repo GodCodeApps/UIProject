@@ -5,34 +5,55 @@
 
         <variable
             name="news"
-            type="com.pym.uiproject.app.showapi.ui.NewBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean"></variable>
+            type="com.pym.uiproject.app.main.ContentGson"></variable>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:orientation="vertical">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{news.title}"
-            android:textColor="#222222"
-            android:textSize="16dp" />
+            android:layout_height="200dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_height="240dp" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop" />
 
-        <TextView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="@{news.title}"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{news.desc}"
-            android:textSize="14dp" />
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:background="#fff">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/ivHeadImage"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_marginLeft="6dp"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/ivHeadImage" />
+        </RelativeLayout>
     </LinearLayout>
 </layout>
