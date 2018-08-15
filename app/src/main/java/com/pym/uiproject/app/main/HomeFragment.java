@@ -49,9 +49,33 @@ public class HomeFragment extends BindingFragment<FragHomeBinding> {
 
     private void init() {
         list = new ArrayList<>();
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean.setName("推荐");
-        list.add(channelListBean);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean1 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean1.setName("推荐");
+        list.add(channelListBean1);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean2 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean2.setName("音乐");
+        list.add(channelListBean2);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean3 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean3.setName("影视");
+        list.add(channelListBean3);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean4 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean4.setName("综艺");
+        list.add(channelListBean4);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean5 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean5.setName("社会");
+        list.add(channelListBean5);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean6 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean6.setName("农人");
+        list.add(channelListBean6);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean7 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean7.setName("游戏");
+        list.add(channelListBean7);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean8 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean8.setName("美食");
+        list.add(channelListBean8);
+        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean9 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
+        channelListBean9.setName("体育");
+        list.add(channelListBean9);
         homePagerAdapter = new HomePagerAdapter(getChildFragmentManager(), list);
         binding.viewPager.setAdapter(homePagerAdapter);
         binding.tableLayout.setPadding(0, 0, 0, 0);

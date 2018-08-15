@@ -51,12 +51,9 @@ public class NewMutAdapter extends RecyclerView.Adapter<NewMutAdapter.MyNewViewH
         ContentGson contentGson = beanList.get(position);
         if (contentGson.isHas_image()) {
             holder.dataBinding.imageView.setVisibility(View.VISIBLE);
-            Glide.with(holder.dataBinding.getRoot().getContext())
-                    .load(contentGson.getMiddle_image().getUrl_list().get(0).getUrl().replace("list/190x124","video1609"))
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                    .into( holder.dataBinding.imageView);
+            ImageLoader.loadImageUrl( holder.dataBinding.imageView, contentGson.getMiddle_image().getUrl_list().get(0).getUrl().replace("list/190x124","video1609"));
         } else {
-            holder.dataBinding.getRoot().findViewById(R.id.imageView).setVisibility(View.GONE);
+            holder.dataBinding.imageView.setVisibility(View.GONE);
             ImageLoader.loadImageUrl( holder.dataBinding.imageView, "");
         }
         ImageLoader.loadCircleImage(holder.dataBinding.ivHeadImage, contentGson.getUser_info().getAvatar_url());

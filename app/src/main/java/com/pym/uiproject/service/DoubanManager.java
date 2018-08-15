@@ -28,8 +28,8 @@ public class DoubanManager extends BaseManager implements DataLayer.DoubanServic
     }
 
     @Override
-    public Observable<VideoLiveList> getVideoLiveList(Fragment fragment, int id,int page) {
-        return getApi().getVideoliveList(id,page);
+    public Observable<VideoLiveList> getVideoLiveList(Fragment fragment, int id,int feeds_type,int page) {
+        return getApi().getVideoliveList(id,feeds_type,page);
     }
 
     @Override

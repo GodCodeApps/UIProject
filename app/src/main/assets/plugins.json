@@ -1,0 +1,35 @@
+[
+  {
+    "packageName": "com.ss.ttm",
+    "pluginType": 2,
+    "minVersionCode": 82
+  },
+  {
+    "packageName": "com.ss.ttm.mm",
+    "pluginType": 2
+  },
+  {
+    "packageName": "com.bytedance.common.plugin.cronet",
+    "pluginType": 2,
+    "minVersionCode": 144,
+    "extraPackages": ["org.chromium", "com.bytedance.org.chromium"]
+  },
+  {
+    "packageName": "com.ixigua.plugin.wschannel",
+    "pluginType": 2
+  },
+  {
+    "packageName": "com.ixigua.live.cocos2dx",
+    "pluginType": 2,
+    "minVersionCode":7
+  },
+  {
+    "packageName": "com.ixigua.live.pushstream",
+    "pluginType": 2,
+    "minVersionCode":1
+  },
+  {
+    "packageName": "com.xigua.ttm.ttpreloader",
+    "pluginType": 2
+  }
+]

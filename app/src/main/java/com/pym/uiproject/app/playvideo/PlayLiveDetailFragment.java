@@ -1,13 +1,17 @@
 package com.pym.uiproject.app.playvideo;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.kk.taurus.playerbase.entity.DataSource;
 import com.pym.uiproject.R;
 import com.pym.uiproject.base.BindingFragment;
@@ -61,19 +65,33 @@ public class PlayLiveDetailFragment extends BindingFragment<FragPlayLiveDetailBi
         DataSource dataSource = new DataSource(infoBean.getLive_info().getStream_url().getPullUrl().getFULL_HD1().getHls());
         AssistPlayer.get().play(binding.frameVideo, dataSource);
         if(infoBean.getLive_info().getOrientation()==0){
-            CoordinatorLayout.LayoutParams layoutParams = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
             binding.frameVideo.setLayoutParams(layoutParams);
             ImageLoader.loadCircleImage(binding.ivHeadImage,infoBean.getUser_info().getAvatar_url());
             binding.tvName.setText(infoBean.getUser_info().getName());
             binding.tvFans.setText(infoBean.getUser_info().getFans_count()+"粉丝");
+            binding.tvWatch.setText("观看人数:"+infoBean.getLive_info().getWatching_count());
 
         }else{
-            CoordinatorLayout.LayoutParams layoutParams = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, DisplayUtil.dp2px(220));
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, DisplayUtil.dp2px(220));
             binding.frameVideo.setLayoutParams(layoutParams);
         }
+        binding.animationViewiew.setImageAssetsFolder("digganimation/images");
+        binding.animationViewiew.setAnimation("digganimation/data1.json");
+        binding.animationViewiew.setScale(0.4f);
+        binding.animationViewiew.setSpeed(0.5f);
+        binding.animationViewiew.playAnimation();
+        binding.rlLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+//                binding.animationViewiew.setX(v.getWidth());
+//                binding.animationViewiew.setY(v.getHeight());
+                binding.animationViewiew.playAnimation();
+                return false;
+            }
+        });
 
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();

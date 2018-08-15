@@ -65,7 +65,7 @@ public class DataLayer {
     public interface DoubanService {
         Observable<NewHomeInfo> getNewHomeList(Fragment fragment);
         Observable<VideoLiveTable> getVideoLiveTable(Fragment fragment);
-        Observable<VideoLiveList> getVideoLiveList(Fragment fragment,int id,int page);
+        Observable<VideoLiveList> getVideoLiveList(Fragment fragment,int id,int feeds_type,int page);
         Observable<Result> getShow(Fragment fragment, String type, int page);
     }
 }

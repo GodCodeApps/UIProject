@@ -3,7 +3,9 @@ package com.pym.uiproject.app.playvideo;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -13,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.model.LottieComposition;
+import com.airbnb.lottie.LottieComposition;
 import com.android.databinding.library.baseAdapters.BR;
 import com.pym.uiproject.R;
 import com.pym.uiproject.base.RxBus;
@@ -31,7 +33,7 @@ import java.util.List;
  */
 public class VideoLiveListAdapter extends RecyclerView.Adapter<VideoLiveListAdapter.VideoHolder> {
     List<VideoLiveList.HomeDivsBean.HomePartitonBean> beanList;
-    DecimalFormat format = new DecimalFormat("0.00");
+    DecimalFormat format = new DecimalFormat("0.0");
     private final int mScreenUseW;
     private final ListPlayLogic mListPlayLogic;
     private Context context;
@@ -55,15 +57,12 @@ public class VideoLiveListAdapter extends RecyclerView.Adapter<VideoLiveListAdap
         return beanList.get(position);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(VideoHolder holder, int position) {
-
         VideoLiveList.HomeDivsBean.HomePartitonBean.RoomInfoBean room_info = beanList.get(position).getRoom_info();
         holder.videoListBinding.setVariable(BR.item, room_info);
         holder.videoListBinding.executePendingBindings();
-
-//        ViewCompat.setElevation(holder.videoListBinding.layoutBox, DisplayUtil.dp2px(3));
-//        updateWH(holder);
         int anInt = Integer.parseInt(room_info.getLive_info().getWatching_count());
         if (anInt > 10000) {
             double aDouble = Double.parseDouble(anInt + "");
@@ -75,7 +74,7 @@ public class VideoLiveListAdapter extends RecyclerView.Adapter<VideoLiveListAdap
         holder.videoListBinding.watchNumber.setText(watchNum);
         holder.videoListBinding.animationViewiew.setAnimation("xigualive_live_line.json", LottieAnimationView.CacheStrategy.Strong);
         holder.videoListBinding.animationViewiew.playAnimation();
-        holder.videoListBinding.tvAuth.setText(room_info.getUser_info().getName() + "     " + room_info.getUser_info().getFans_count() + "粉丝");
+        holder.videoListBinding.tvAuth.setText(room_info.getUser_info().getName() + "  " + room_info.getUser_info().getFans_count() + "粉丝");
         ImageLoader.loadCircleImage(holder.videoListBinding.imageView, room_info.getUser_info().getAvatar_url());
         ImageLoader.loadImage(holder.videoListBinding.imageViewItem, room_info.getLarge_image().getUrl(), Integer.parseInt(room_info.getLarge_image().getWidth()), Integer.parseInt(room_info.getLarge_image().getHeight()));
         holder.videoListBinding.imageViewItem.setOnClickListener(new View.OnClickListener() {

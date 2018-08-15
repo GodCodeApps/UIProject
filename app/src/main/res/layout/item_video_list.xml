@@ -48,7 +48,6 @@
                         android:layout_gravity="center"
                         android:layout_weight="1.2"
                         applot:lottie_autoPlay="true"
-                        applot:lottie_fileName="xigualive_live_line.json"
                         applot:lottie_loop="true" />
                     <TextView
                         android:layout_width="0dp"

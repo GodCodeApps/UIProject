@@ -79,5 +79,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.support:design:26.+'
     compile 'com.kk.taurus.playerbase:playerbase:3.3.0.3'
-    compile 'com.airbnb.android:lottie:1.0.1'
+    compile 'com.airbnb.android:lottie:2.1.2'
 }

@@ -2,13 +2,13 @@ package com.pym.uiproject.app.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.pym.uiproject.R;
 import com.pym.uiproject.base.BindingActivity;
 import com.pym.uiproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends BindingActivity<ActivityMainBinding> {
-
 
     @Override
     protected int getLayoutId() {
