@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -41,10 +42,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation 'junit:junit:4.12'
-    //    compile rootProject.ext.libSupportV4
-    //    compile rootProject.ext.libSupportAppcompat
-//    implementation rootProject.ext.libSupportDesign
+//    implementation rootProject.ext.libSupportV4
+//    implementation rootProject.ext.libSupportAppcompat
+    implementation rootProject.ext.libSupportDesign
     implementation rootProject.ext.libSupportRecyclerView
     implementation rootProject.ext.libSupportCardView
     //    compile rootProject.ext.libSupportGridLayout
@@ -77,7 +77,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.android.support:design:26.+'
-    compile 'com.kk.taurus.playerbase:playerbase:3.3.0.3'
-    compile 'com.airbnb.android:lottie:2.1.2'
+//    implementation 'com.android.support:design:26.+'
+    compile 'com.kk.taurus.playerbase:playerbase:3.3.1'
+    compile 'com.airbnb.android:lottie:2.0.0'
 }

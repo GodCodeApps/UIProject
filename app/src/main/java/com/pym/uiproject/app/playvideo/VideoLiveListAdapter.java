@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.LottieComposition;
 import com.android.databinding.library.baseAdapters.BR;
 import com.pym.uiproject.R;
 import com.pym.uiproject.base.RxBus;

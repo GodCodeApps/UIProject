@@ -11,7 +11,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.kk.taurus.playerbase.entity.DataSource;
 import com.pym.uiproject.R;
 import com.pym.uiproject.base.BindingFragment;
@@ -76,17 +75,17 @@ public class PlayLiveDetailFragment extends BindingFragment<FragPlayLiveDetailBi
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, DisplayUtil.dp2px(220));
             binding.frameVideo.setLayoutParams(layoutParams);
         }
-        binding.animationViewiew.setImageAssetsFolder("digganimation/images");
-        binding.animationViewiew.setAnimation("digganimation/data1.json");
-        binding.animationViewiew.setScale(0.4f);
-        binding.animationViewiew.setSpeed(0.5f);
-        binding.animationViewiew.playAnimation();
+        binding.animationViewiew1.setImageAssetsFolder("digganimation/images");
+        binding.animationViewiew1.setAnimation("digganimation/data1.json");
+        binding.animationViewiew1.setScale(0.4f);
+        binding.animationViewiew1.setSpeed(0.5f);
+        binding.animationViewiew1.playAnimation();
         binding.rlLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 //                binding.animationViewiew.setX(v.getWidth());
 //                binding.animationViewiew.setY(v.getHeight());
-                binding.animationViewiew.playAnimation();
+                binding.animationViewiew1.playAnimation();
                 return false;
             }
         });

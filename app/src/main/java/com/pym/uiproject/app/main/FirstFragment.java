@@ -2,20 +2,12 @@ package com.pym.uiproject.app.main;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 
-import com.google.gson.Gson;
 import com.pym.uiproject.R;
-import com.pym.uiproject.app.message.News;
-import com.pym.uiproject.app.showapi.ShowApiRequest;
-import com.pym.uiproject.app.showapi.ui.BigImageAdapter;
-import com.pym.uiproject.app.showapi.ui.NewBean;
 import com.pym.uiproject.base.BindingFragment;
 import com.pym.uiproject.databinding.FragFirstBinding;
 import com.pym.uiproject.util.JsonUtil;
@@ -25,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -70,6 +60,7 @@ public class FirstFragment extends BindingFragment<FragFirstBinding> {
         return firstFragment;
     }
 
+    @SuppressLint("CheckResult")
     public void getData(boolean isMore) {
         getDataLayer().getDoubanService().getNewHomeList(this)
                 .subscribeOn(Schedulers.io())

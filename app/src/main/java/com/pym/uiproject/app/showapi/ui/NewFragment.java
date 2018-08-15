@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.google.gson.Gson;
 import com.pym.uiproject.R;
 import com.pym.uiproject.app.message.Result;
@@ -41,49 +40,21 @@ public class NewFragment extends BindingFragment<FragNewMainBinding> {
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
         results = new ArrayList<>();
-
-        binding.animationViewiew.setImageAssetsFolder("digganimation/images");
-        binding.animationViewiew.setAnimation("digganimation/data1.json");
-        binding.animationViewiew.setScale(0.4f);
-        binding.animationViewiew.playAnimation();
-        binding.getRoot().setOnTouchListener(new View.OnTouchListener() {
+        bigImageAdapter = new BigImageAdapter(results);
+        binding.recycler.setAdapter(bigImageAdapter);
+        new Thread(runnable).start();
+        binding.recycler.setOnLoadListener(new AutoLoadRecyclerView.OnLoadListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                float x = v.getX();
-                float y = v.getY();
-                float pivotX = v.getPivotX();
-                float pivotY = v.getPivotY();
-                Log.e("onTouch", "x=" + x + "y=" + y);
-                Log.e("onTouch", "pivotX=" + pivotX + "pivotY=" + pivotY);
-
-
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    LottieAnimationView animationView=new LottieAnimationView(binding.getRoot().getContext());
-                    animationView.setImageAssetsFolder("digganimation/images");
-                    animationView.setAnimation("digganimation/data1.json");
-                    animationView.setScale(0.4f);
-                    animationView.setX(event.getX()-60);
-                    animationView.setY(event.getY()-60);
-                    animationView.playAnimation();
-                }
-                return true;
+            public void onLoad() {
+                new Thread(runnable).start();
             }
         });
-//        bigImageAdapter = new BigImageAdapter(results);
-//        binding.recycler.setAdapter(bigImageAdapter);
-//        new Thread(runnable).start();
-//        binding.recycler.setOnLoadListener(new AutoLoadRecyclerView.OnLoadListener() {
-//            @Override
-//            public void onLoad() {
-//                new Thread(runnable).start();
-//            }
-//        });
-//        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                new Thread(runnable).start();
-//            }
-//        });
+        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(runnable).start();
+            }
+        });
 
     }
 

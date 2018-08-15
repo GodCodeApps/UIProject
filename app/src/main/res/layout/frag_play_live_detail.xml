@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:applot="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/root"
@@ -69,7 +68,7 @@
         </LinearLayout>
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationViewiew"
+            android:id="@+id/animationViewiew1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
