@@ -41,56 +41,6 @@ public class MsgFragment extends BindingFragment<FragMsgBinding> {
         simpleAdapter = new MsgListAdapter(lists);
         binding.recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recycler.setAdapter(simpleAdapter);
-//        getData(false);
-//        binding.recycler.setOnLoadListener(new AutoLoadRecyclerView.OnLoadListener() {
-//            @Override
-//            public void onLoad() {
-//                getData(true);
-//            }
-//        });
-//        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                getData(false);
-//            }
-//        });
-    }
-
-    @SuppressLint("CheckResult")
-    public void getData(boolean isMore) {
-//        getDataLayer().getDoubanService().getRank(this, isMore ? binding.recycler.pageNo + 1 : 1)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doOnSubscribe(disposable -> {
-//                    binding.recycler.loadData(isMore);
-//                    if (isMore) {
-//                    } else {
-//                        binding.refreshLayout.setRefreshing(true);
-//                    }
-//                })
-//                .doOnNext(result -> {
-//                    if (result != null && result.getCode() == 200) {
-//                        News.BodyBean body = result.getBody();
-//                        List<News.BodyBean.ComponentsBean.DataBean> data = body.getComponents().get(0).getData();
-//                        binding.recycler.haveMore = result != null && !data.isEmpty();
-//                        if (!isMore) lists.clear();
-//                        if (body.getComponents().get(0).getData() != null) lists.addAll(data);
-//                    }
-//                })
-//                .doOnError(throwable -> {
-//                    binding.refreshLayout.setRefreshing(false);
-//                    binding.recycler.loading = false;
-//                    binding.recycler.pageNo--;
-//                    Snackbar.make(binding.recycler, "加载失败", Snackbar.LENGTH_LONG).show();
-//                })
-//                .doOnComplete(() -> {
-//                    binding.refreshLayout.setRefreshing(false);
-//                    binding.recycler.loading = false;
-//                })
-//                .subscribe(result -> {
-//                    simpleAdapter.notifyDataSetChanged();
-//                });
-//
     }
 }
 

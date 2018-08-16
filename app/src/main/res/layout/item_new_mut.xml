@@ -24,10 +24,10 @@
                 android:scaleType="centerCrop" />
 
             <TextView
+                android:id="@+id/Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
-                android:text="@{news.title}"
                 android:textColor="#fff"
                 android:textSize="18dp" />
         </RelativeLayout>

@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.pym.uiproject.R;
+import com.pym.uiproject.app.message.MsgFragment;
 import com.pym.uiproject.app.playvideo.PlayVideoFragment;
-import com.pym.uiproject.app.showapi.ui.NewFragment;
 import com.pym.uiproject.base.BindingFragment;
 import com.pym.uiproject.base.PopFragmentEvent;
 import com.pym.uiproject.base.PopToFragmentEvent;
@@ -31,6 +29,7 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
     private StartFragmentWithPopEvent startFragmentWithPopEvent;
     private PopFragmentEvent popFragmentEvent;
     private PopToFragmentEvent popToFragmentEvent;
+
     public static MainFragment newInstance() {
         return new MainFragment();
     }
@@ -94,8 +93,7 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
-//        adapter.addFragment(new MsgFragment());
-        adapter.addFragment(new NewFragment());
+        adapter.addFragment(new MsgFragment());
         adapter.addFragment(new PlayVideoFragment());
         viewPager.setAdapter(adapter);
     }

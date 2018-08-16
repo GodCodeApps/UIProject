@@ -1,28 +1,18 @@
 package com.pym.uiproject.app.playvideo;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
+import android.support.v4.app.Fragment;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.android.databinding.library.baseAdapters.BR;
 import com.pym.uiproject.R;
 import com.pym.uiproject.base.RxBus;
 import com.pym.uiproject.base.StartFragmentEvent;
+import com.pym.uiproject.base.recycler.RecyclerHeaderFooterAdapter;
+import com.pym.uiproject.base.recycler.RecyclerHolder;
 import com.pym.uiproject.databinding.ItemVideoListBinding;
-import com.pym.uiproject.util.DisplayUtil;
 import com.pym.uiproject.util.ImageLoader;
-import com.pym.uiproject.util.play.ListPlayLogic;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -30,38 +20,19 @@ import java.util.List;
 /**
  * Peng YanMing on 2018\8\6 0006
  */
-public class VideoLiveListAdapter extends RecyclerView.Adapter<VideoLiveListAdapter.VideoHolder> {
+public class VideoLiveListAdapter extends RecyclerHeaderFooterAdapter<VideoLiveList.HomeDivsBean.HomePartitonBean, ItemVideoListBinding> {
     List<VideoLiveList.HomeDivsBean.HomePartitonBean> beanList;
     DecimalFormat format = new DecimalFormat("0.0");
-    private final int mScreenUseW;
-    private final ListPlayLogic mListPlayLogic;
-    private Context context;
     private String watchNum = "";
 
-    public VideoLiveListAdapter(Context context, RecyclerView recyclerView, List<VideoLiveList.HomeDivsBean.HomePartitonBean> list) {
+    public VideoLiveListAdapter(Context context, Fragment fragment, List<VideoLiveList.HomeDivsBean.HomePartitonBean> list) {
+        super(context, list, R.layout.item_video_list);
         beanList = list;
-        context = context;
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        mScreenUseW = displayMetrics.widthPixels - DisplayUtil.dp2px(6 * 2);
-        mListPlayLogic = new ListPlayLogic(context, recyclerView, this);
     }
 
     @Override
-    public VideoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemVideoListBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_video_list, parent, false);
-        return new VideoHolder(binding);
-    }
-
-    public VideoLiveList.HomeDivsBean.HomePartitonBean getItem(int position) {
-        return beanList.get(position);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    public void onBindViewHolder(VideoHolder holder, int position) {
-        VideoLiveList.HomeDivsBean.HomePartitonBean.RoomInfoBean room_info = beanList.get(position).getRoom_info();
-        holder.videoListBinding.setVariable(BR.item, room_info);
-        holder.videoListBinding.executePendingBindings();
+    protected void onBind(RecyclerHolder<ItemVideoListBinding> holder, int position, VideoLiveList.HomeDivsBean.HomePartitonBean homePartitonBean) {
+        VideoLiveList.HomeDivsBean.HomePartitonBean.RoomInfoBean room_info = homePartitonBean.getRoom_info();
         int anInt = Integer.parseInt(room_info.getLive_info().getWatching_count());
         if (anInt > 10000) {
             double aDouble = Double.parseDouble(anInt + "");
@@ -70,69 +41,20 @@ public class VideoLiveListAdapter extends RecyclerView.Adapter<VideoLiveListAdap
         } else {
             watchNum = anInt + "人观看";
         }
-        holder.videoListBinding.watchNumber.setText(watchNum);
-        holder.videoListBinding.animationViewiew.setAnimation("xigualive_live_line.json", LottieAnimationView.CacheStrategy.Strong);
-        holder.videoListBinding.animationViewiew.playAnimation();
-        holder.videoListBinding.tvAuth.setText(room_info.getUser_info().getName() + "  " + room_info.getUser_info().getFans_count() + "粉丝");
-        ImageLoader.loadCircleImage(holder.videoListBinding.imageView, room_info.getUser_info().getAvatar_url());
-        ImageLoader.loadImage(holder.videoListBinding.imageViewItem, room_info.getLarge_image().getUrl(), Integer.parseInt(room_info.getLarge_image().getWidth()), Integer.parseInt(room_info.getLarge_image().getHeight()));
-        holder.videoListBinding.imageViewItem.setOnClickListener(new View.OnClickListener() {
+        holder.binding.tvTitle.setText(room_info.getTitle());
+        holder.binding.watchNumber.setText(watchNum);
+        holder.binding.animationViewiew.setAnimation("xigualive_live_line.json", LottieAnimationView.CacheStrategy.Strong);
+        holder.binding.animationViewiew.playAnimation();
+        holder.binding.tvAuth.setText(room_info.getUser_info().getName() + "  " + room_info.getUser_info().getFans_count() + "粉丝");
+        ImageLoader.loadCircleImage(holder.binding.imageView, room_info.getUser_info().getAvatar_url());
+        ImageLoader.loadImage(holder.binding.imageViewItem, room_info.getLarge_image().getUrl(), Integer.parseInt(room_info.getLarge_image().getWidth()), Integer.parseInt(room_info.getLarge_image().getHeight()));
+        holder.binding.imageViewItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("info",room_info);
+                bundle.putSerializable("info", room_info);
                 RxBus.get().post(new StartFragmentEvent(PlayLiveDetailFragment.newInstance(bundle)));
             }
         });
-
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return beanList.size();
-    }
-
-    public class VideoHolder extends RecyclerView.ViewHolder {
-        public ItemVideoListBinding videoListBinding;
-
-        public VideoHolder(ItemVideoListBinding binding) {
-            super(binding.getRoot());
-            videoListBinding = binding;
-            videoListBinding.getRoot().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listListener != null) {
-                        listListener.onItemListener();
-                    }
-                }
-            });
-        }
-    }
-
-    public void updatePlayPosition(int position) {
-        mListPlayLogic.updatePlayPosition(position);
-    }
-
-    private void updateWH(VideoHolder holder) {
-        ViewGroup.LayoutParams layoutParams = holder.videoListBinding.imageViewItem.getLayoutParams();
-        layoutParams.width = mScreenUseW;
-        layoutParams.height = mScreenUseW * 9 / 16;
-        holder.videoListBinding.imageViewItem.setLayoutParams(layoutParams);
-    }
-
-    public ListPlayLogic getListPlayLogic() {
-        return mListPlayLogic;
-    }
-
-    public OnListListener listListener;
-
-    public interface OnListListener {
-        void onItemListener();
-    }
-
-    public void setItemClickListener(OnListListener itemClickListener) {
-        listListener = itemClickListener;
-
     }
 }

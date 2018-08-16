@@ -4,9 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.pym.uiproject.app.main.FirstFragment;
-import com.pym.uiproject.app.main.NewTitle;
-
 import java.util.List;
 
 class TitlePagerAdapter extends FragmentStatePagerAdapter {

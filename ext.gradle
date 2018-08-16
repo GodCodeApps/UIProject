@@ -20,7 +20,7 @@ def greenDaoVersion = "3.2.2"
 
 
 ext {
-    applicationId = "gavin.sensual"
+    applicationId = "com.pym.uiproject"
     compileSdkVersion = 26
     buildToolsVersion = "27.0.3"
     minSdkVersion = 16

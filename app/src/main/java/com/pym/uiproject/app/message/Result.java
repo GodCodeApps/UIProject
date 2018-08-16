@@ -3,7 +3,6 @@ package com.pym.uiproject.app.message;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * 这里是萌萌哒注释君
  *
  * @author Peng YanMing 2017/5/6
  */

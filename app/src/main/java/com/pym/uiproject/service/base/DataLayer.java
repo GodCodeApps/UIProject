@@ -63,7 +63,7 @@ public class DataLayer {
     // &_rticket=1533708507711
     // &rom_version=Funtouch+OS_3.2_PD1709_A_1.14.3
     public interface DoubanService {
-        Observable<NewHomeInfo> getNewHomeList(Fragment fragment);
+        Observable<NewHomeInfo> getNewHomeList(Fragment fragment,int page);
         Observable<VideoLiveTable> getVideoLiveTable(Fragment fragment);
         Observable<VideoLiveList> getVideoLiveList(Fragment fragment,int id,int feeds_type,int page);
         Observable<Result> getShow(Fragment fragment, String type, int page);

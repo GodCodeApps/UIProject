@@ -1,14 +1,9 @@
 package com.pym.uiproject.app.playvideo;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.kk.taurus.playerbase.entity.DataSource;

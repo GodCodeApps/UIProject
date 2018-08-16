@@ -36,7 +36,7 @@ public class FirstFragment extends BindingFragment<FragFirstBinding> {
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
         results = new ArrayList<>();
-        bigImageAdapter = new NewMutAdapter(results);
+        bigImageAdapter = new NewMutAdapter(getContext(),this,results);
         binding.recycle.setAdapter(bigImageAdapter);
         getData(false);
         binding.recycle.setOnLoadListener(new AutoLoadRecyclerView.OnLoadListener() {
@@ -62,7 +62,7 @@ public class FirstFragment extends BindingFragment<FragFirstBinding> {
 
     @SuppressLint("CheckResult")
     public void getData(boolean isMore) {
-        getDataLayer().getDoubanService().getNewHomeList(this)
+        getDataLayer().getDoubanService().getNewHomeList(this,1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(news -> {

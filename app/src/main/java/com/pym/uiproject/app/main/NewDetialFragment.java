@@ -1,11 +1,9 @@
-package com.pym.uiproject.app.showapi.ui;
+package com.pym.uiproject.app.main;
 
 import android.annotation.SuppressLint;
-import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +14,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.pym.uiproject.R;
-import com.pym.uiproject.app.main.MainActivity;
 import com.pym.uiproject.base.BindingFragment;
 import com.pym.uiproject.databinding.FragNewDetialBinding;
 
@@ -110,7 +106,6 @@ public class NewDetialFragment extends BindingFragment<FragNewDetialBinding> {
             return true;
         }
 
-        //获取网页标题
         @Override
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);

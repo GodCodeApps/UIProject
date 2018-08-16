@@ -103,7 +103,7 @@
                     android:textColor="#000000"
                     android:textSize="14dp"
                     android:singleLine="true"
-                    android:text="@{item.title}" />
+                    />
 
                 <TextView
                     android:id="@+id/tvAuth"

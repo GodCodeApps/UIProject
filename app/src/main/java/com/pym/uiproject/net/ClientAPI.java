@@ -84,7 +84,8 @@ public interface ClientAPI {
                                              @Field("dpi") String dpi,
                                              @Field("update_version_code") String update_version_code,
                                              @Field("_rticket") String _rticket,
-                                             @Field("rom_version") String rom_version);
+                                             @Field("rom_version") String rom_version,
+                                             @Field("page") int page);
 //    http://display.miguvideo.com/display/v1/data/comps/9bedf04576884b3b845519cf1a371a44?page=3
 //<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 //    /* **************************************************************************** *
