@@ -3,7 +3,7 @@
     <string name="bye_burger_bottom_behavior">com.pym.uiproject.widget.ByeBurgerBottomBehavior</string>
 
     <!-- 下拉刷新 -->
-    <string name="label_loading_idle">发呆中&#46;&#46;&#46;</string>
+    <string name="label_loading_idle">没有更多&#46;&#46;&#46;</string>
     <string name="label_loading_loading">加载中&#46;&#46;&#46;</string>
     <string name="label_loading_empty">什么都没有</string>
     <string name="label_loading_period">再也没有了&#46;&#46;&#46;</string>
