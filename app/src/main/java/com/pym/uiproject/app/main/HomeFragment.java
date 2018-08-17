@@ -5,20 +5,18 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 
 import com.pym.uiproject.R;
+import com.pym.uiproject.app.main.vm.HomeViewModel;
+import com.pym.uiproject.base.BaseViewModel;
 import com.pym.uiproject.base.BindingFragment;
 import com.pym.uiproject.databinding.FragHomeBinding;
-
+import com.pym.uiproject.app.main.model.NewTitle;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.pym.uiproject.app.main.adapter.HomePagerAdapter;
 /**
  * Peng YanMing on 2018\8\4 0004
  */
-public class HomeFragment extends BindingFragment<FragHomeBinding> {
-
-    private List<NewTitle.ShowapiResBodyBean.ChannelListBean> list;
-    private HomePagerAdapter homePagerAdapter;
-
+public class HomeFragment extends BindingFragment<FragHomeBinding,HomeViewModel> {
     @Override
     protected int getLayoutId() {
         return R.layout.frag_home;
@@ -26,44 +24,13 @@ public class HomeFragment extends BindingFragment<FragHomeBinding> {
 
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
-        init();
 
     }
 
-    private void init() {
-        list = new ArrayList<>();
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean1 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean1.setName("推荐");
-        list.add(channelListBean1);
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean2 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean2.setName("音乐");
-        list.add(channelListBean2);
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean3 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean3.setName("影视");
-        list.add(channelListBean3);
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean4 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean4.setName("综艺");
-        list.add(channelListBean4);
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean5 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean5.setName("社会");
-        list.add(channelListBean5);
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean6 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean6.setName("农人");
-        list.add(channelListBean6);
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean7 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean7.setName("游戏");
-        list.add(channelListBean7);
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean8 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean8.setName("美食");
-        list.add(channelListBean8);
-        NewTitle.ShowapiResBodyBean.ChannelListBean channelListBean9 = new NewTitle.ShowapiResBodyBean.ChannelListBean();
-        channelListBean9.setName("体育");
-        list.add(channelListBean9);
-        homePagerAdapter = new HomePagerAdapter(getChildFragmentManager(), list);
-        binding.viewPager.setAdapter(homePagerAdapter);
-        binding.tableLayout.setPadding(0, 0, 0, 0);
-        binding.tableLayout.setupWithViewPager(binding.viewPager);
-        binding.tableLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
-        binding.viewPager.setCurrentItem(0);
+
+    @Override
+    protected void bindViewModel(@Nullable Bundle savedInstanceState) {
+        mViewModel = new HomeViewModel(getContext(), this, mBinding);
+        mViewModel.afterCreate();
     }
 }

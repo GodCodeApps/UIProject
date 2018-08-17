@@ -3,11 +3,9 @@ package com.pym.uiproject.service.base;
 import android.media.Image;
 import android.support.v4.app.Fragment;
 
-import com.pym.uiproject.app.main.NewHomeInfo;
-import com.pym.uiproject.app.message.News;
-import com.pym.uiproject.app.message.Result;
-import com.pym.uiproject.app.playvideo.VideoLiveList;
-import com.pym.uiproject.app.playvideo.VideoLiveTable;
+import com.pym.uiproject.app.main.model.NewHomeInfo;
+import com.pym.uiproject.app.playvideo.model.VideoLiveList;
+import com.pym.uiproject.app.playvideo.model.VideoLiveTable;
 
 import io.reactivex.Observable;
 
@@ -63,9 +61,8 @@ public class DataLayer {
     // &_rticket=1533708507711
     // &rom_version=Funtouch+OS_3.2_PD1709_A_1.14.3
     public interface DoubanService {
-        Observable<NewHomeInfo> getNewHomeList(Fragment fragment,int page);
+        Observable<NewHomeInfo> getNewHomeList(Fragment fragment, int page);
         Observable<VideoLiveTable> getVideoLiveTable(Fragment fragment);
-        Observable<VideoLiveList> getVideoLiveList(Fragment fragment,int id,int feeds_type,int page);
-        Observable<Result> getShow(Fragment fragment, String type, int page);
+        Observable<VideoLiveList> getVideoLiveList(Fragment fragment, int id, int feeds_type, int page);
     }
 }

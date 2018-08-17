@@ -1,4 +1,4 @@
-package com.pym.uiproject.app.playvideo;
+package com.pym.uiproject.app.playvideo.model;
 
 import java.util.List;
 

@@ -1,14 +1,17 @@
-package com.pym.uiproject.app.playvideo;
+package com.pym.uiproject.app.playvideo.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.pym.uiproject.app.playvideo.VideoPlayMainFragment;
+import com.pym.uiproject.app.playvideo.model.VideoLiveTable;
+
 import java.util.List;
 
-class TitlePagerAdapter extends FragmentStatePagerAdapter {
+public class TitlePagerAdapter extends FragmentStatePagerAdapter {
     List<VideoLiveTable.ChannelsBean> titleListBeans;
-    TitlePagerAdapter(FragmentManager fm, List<VideoLiveTable.ChannelsBean> titleListBeans) {
+    public TitlePagerAdapter(FragmentManager fm, List<VideoLiveTable.ChannelsBean> titleListBeans) {
         super(fm);
         this.titleListBeans=titleListBeans;
     }

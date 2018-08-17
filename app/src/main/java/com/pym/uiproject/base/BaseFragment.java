@@ -10,18 +10,18 @@ import com.pym.uiproject.inject.component.ApplicationComponent;
 import com.pym.uiproject.service.base.DataLayer;
 
 import javax.inject.Inject;
+
 import io.reactivex.disposables.CompositeDisposable;
+import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
-import me.yokeyword.fragmentation.anim.DefaultVerticalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
-import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 /**
  * BaseFragment
  *
  * @author Peng YanMing 2016/12/30  2016/12/30
  */
-public abstract class BaseFragment extends SwipeBackFragment {
+public abstract class BaseFragment extends SupportFragment {
     @Inject
     DataLayer mDataLayer;
     @Inject

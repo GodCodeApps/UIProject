@@ -1,4 +1,4 @@
-package com.pym.uiproject.app.main;
+package com.pym.uiproject.app.main.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -127,7 +127,6 @@ public class ContentGson {
     private int video_style;
     private List<ActionListBean> action_list;
     private List<FilterWordsBean> filter_words;
-
     public String getAbstractX() {
         return abstractX;
     }

@@ -9,7 +9,7 @@ import com.kk.taurus.playerbase.entity.DataSource;
 import com.kk.taurus.playerbase.event.BundlePool;
 import com.kk.taurus.playerbase.event.EventKey;
 import com.kk.taurus.playerbase.provider.BaseDataProvider;
-import com.pym.uiproject.app.playvideo.VideoLiveList;
+import com.pym.uiproject.app.playvideo.model.VideoLiveList;
 
 import java.util.List;
 

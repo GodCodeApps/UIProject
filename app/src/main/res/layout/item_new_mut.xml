@@ -5,7 +5,7 @@
 
         <variable
             name="news"
-            type="com.pym.uiproject.app.main.ContentGson"></variable>
+            type="com.pym.uiproject.app.main.model.ContentGson"></variable>
     </data>
 
     <LinearLayout

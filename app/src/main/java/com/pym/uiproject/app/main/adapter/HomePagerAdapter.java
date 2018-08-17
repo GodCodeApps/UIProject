@@ -1,14 +1,17 @@
-package com.pym.uiproject.app.main;
+package com.pym.uiproject.app.main.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.pym.uiproject.app.main.FirstFragment;
+import com.pym.uiproject.app.main.model.NewTitle;
+
 import java.util.List;
 
-class HomePagerAdapter extends FragmentStatePagerAdapter {
+public class HomePagerAdapter extends FragmentStatePagerAdapter {
     List<NewTitle.ShowapiResBodyBean.ChannelListBean> titleListBeans;
-    HomePagerAdapter(FragmentManager fm,List<NewTitle.ShowapiResBodyBean.ChannelListBean> titleListBeans) {
+    public HomePagerAdapter(FragmentManager fm,List<NewTitle.ShowapiResBodyBean.ChannelListBean> titleListBeans) {
         super(fm);
         this.titleListBeans=titleListBeans;
     }

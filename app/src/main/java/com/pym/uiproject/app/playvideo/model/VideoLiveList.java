@@ -1,4 +1,4 @@
-package com.pym.uiproject.app.playvideo;
+package com.pym.uiproject.app.playvideo.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,7 +17,7 @@ public class VideoLiveList {
      */
 
     private boolean reserve_cache;
-    private boolean has_more;
+    private boolean has_more=true;
     private int cursor;
     private BaseRespBean base_resp;
     private List<HomeDivsBean> home_divs;

@@ -8,6 +8,8 @@ import android.widget.RelativeLayout;
 
 import com.kk.taurus.playerbase.entity.DataSource;
 import com.pym.uiproject.R;
+import com.pym.uiproject.app.playvideo.model.VideoLiveList;
+import com.pym.uiproject.base.BaseViewModel;
 import com.pym.uiproject.base.BindingFragment;
 import com.pym.uiproject.databinding.FragPlayLiveDetailBinding;
 import com.pym.uiproject.util.DisplayUtil;
@@ -17,7 +19,7 @@ import com.pym.uiproject.util.play.AssistPlayer;
 /**
  * Peng YanMing on 2018\8\7 0007
  */
-public class PlayLiveDetailFragment extends BindingFragment<FragPlayLiveDetailBinding> {
+public class PlayLiveDetailFragment extends BindingFragment<FragPlayLiveDetailBinding,BaseViewModel> {
 
     private static  VideoLiveList.HomeDivsBean.HomePartitonBean.RoomInfoBean infoBean;
 
@@ -57,30 +59,30 @@ public class PlayLiveDetailFragment extends BindingFragment<FragPlayLiveDetailBi
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
         DataSource dataSource = new DataSource(infoBean.getLive_info().getStream_url().getPullUrl().getFULL_HD1().getHls());
-        AssistPlayer.get().play(binding.frameVideo, dataSource);
+        AssistPlayer.get().play(mBinding.frameVideo, dataSource);
         if(infoBean.getLive_info().getOrientation()==0){
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            binding.frameVideo.setLayoutParams(layoutParams);
-            ImageLoader.loadCircleImage(binding.ivHeadImage,infoBean.getUser_info().getAvatar_url());
-            binding.tvName.setText(infoBean.getUser_info().getName());
-            binding.tvFans.setText(infoBean.getUser_info().getFans_count()+"粉丝");
-            binding.tvWatch.setText("观看人数:"+infoBean.getLive_info().getWatching_count());
+            mBinding.frameVideo.setLayoutParams(layoutParams);
+            ImageLoader.loadCircleImage(mBinding.ivHeadImage,infoBean.getUser_info().getAvatar_url());
+            mBinding.tvName.setText(infoBean.getUser_info().getName());
+            mBinding.tvFans.setText(infoBean.getUser_info().getFans_count()+"粉丝");
+            mBinding.tvWatch.setText("观看人数:"+infoBean.getLive_info().getWatching_count());
 
         }else{
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, DisplayUtil.dp2px(220));
-            binding.frameVideo.setLayoutParams(layoutParams);
+            mBinding.frameVideo.setLayoutParams(layoutParams);
         }
-        binding.animationViewiew1.setImageAssetsFolder("digganimation/images");
-        binding.animationViewiew1.setAnimation("digganimation/data1.json");
-        binding.animationViewiew1.setScale(0.4f);
-        binding.animationViewiew1.setSpeed(0.5f);
-        binding.animationViewiew1.playAnimation();
-        binding.rlLayout.setOnTouchListener(new View.OnTouchListener() {
+        mBinding.animationViewiew1.setImageAssetsFolder("digganimation/images");
+        mBinding.animationViewiew1.setAnimation("digganimation/data1.json");
+        mBinding.animationViewiew1.setScale(0.4f);
+        mBinding.animationViewiew1.setSpeed(0.5f);
+        mBinding.animationViewiew1.playAnimation();
+        mBinding.rlLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 //                binding.animationViewiew.setX(v.getWidth());
 //                binding.animationViewiew.setY(v.getHeight());
-                binding.animationViewiew1.playAnimation();
+                mBinding.animationViewiew1.playAnimation();
                 return false;
             }
         });
@@ -90,5 +92,10 @@ public class PlayLiveDetailFragment extends BindingFragment<FragPlayLiveDetailBi
     public void onDestroy() {
         super.onDestroy();
         AssistPlayer.get().destroy();
+    }
+
+    @Override
+    protected void bindViewModel(@Nullable Bundle savedInstanceState) {
+
     }
 }

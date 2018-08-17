@@ -1,4 +1,4 @@
-package com.pym.uiproject.app.main;
+package com.pym.uiproject.app.framework;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,8 +8,9 @@ import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
 import com.pym.uiproject.R;
-import com.pym.uiproject.app.message.MsgFragment;
+import com.pym.uiproject.app.main.HomeFragment;
 import com.pym.uiproject.app.playvideo.PlayVideoFragment;
+import com.pym.uiproject.base.BaseViewModel;
 import com.pym.uiproject.base.BindingFragment;
 import com.pym.uiproject.base.PopFragmentEvent;
 import com.pym.uiproject.base.PopToFragmentEvent;
@@ -22,7 +23,7 @@ import com.pym.uiproject.widget.BottomNavigationViewHelper;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 
-public class MainFragment extends BindingFragment<FragMainBinding> {
+public class MainFragment extends BindingFragment<FragMainBinding,BaseViewModel> {
     private MenuItem menuItem;
     private boolean isResumed;
     private StartFragmentEvent startFragmentEvent;
@@ -42,30 +43,30 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
-        BottomNavigationViewHelper.disableShiftMode(binding.bottomNavigation);
-        binding.bottomNavigation.setOnNavigationItemSelectedListener(
+        BottomNavigationViewHelper.disableShiftMode(mBinding.bottomNavigation);
+        mBinding.bottomNavigation.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.item_news:
-                                binding.viewpager.setCurrentItem(0);
+                                mBinding.viewpager.setCurrentItem(0);
                                 break;
 //                            case R.id.item_lib:
 //                                binding.viewpager.setCurrentItem(1);
 //                                break;
-                            case R.id.item_find:
-                                binding.viewpager.setCurrentItem(1);
-                                break;
+//                            case R.id.item_find:
+//                                binding.viewpager.setCurrentItem(1);
+//                                break;
                             case R.id.item_more:
-                                binding.viewpager.setCurrentItem(2);
+                                mBinding.viewpager.setCurrentItem(1);
                                 break;
                         }
                         return false;
                     }
                 });
 
-        binding.viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mBinding.viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -76,9 +77,9 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
                 if (menuItem != null) {
                     menuItem.setChecked(false);
                 } else {
-                    binding.bottomNavigation.getMenu().getItem(0).setChecked(false);
+                    mBinding.bottomNavigation.getMenu().getItem(0).setChecked(false);
                 }
-                menuItem = binding.bottomNavigation.getMenu().getItem(position);
+                menuItem = mBinding.bottomNavigation.getMenu().getItem(position);
                 menuItem.setChecked(true);
             }
 
@@ -86,14 +87,13 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
             public void onPageScrollStateChanged(int state) {
             }
         });
-        setupViewPager(binding.viewpager);
+        setupViewPager(mBinding.viewpager);
         subscribeEvent();
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new MsgFragment());
         adapter.addFragment(new PlayVideoFragment());
         viewPager.setAdapter(adapter);
     }
@@ -165,5 +165,10 @@ public class MainFragment extends BindingFragment<FragMainBinding> {
     public void onPause() {
         super.onPause();
         isResumed = false;
+    }
+
+    @Override
+    protected void bindViewModel(@Nullable Bundle savedInstanceState) {
+
     }
 }

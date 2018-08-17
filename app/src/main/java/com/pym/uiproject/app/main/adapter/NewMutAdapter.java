@@ -1,11 +1,12 @@
-package com.pym.uiproject.app.main;
+package com.pym.uiproject.app.main.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
-
 import com.pym.uiproject.R;
+import com.pym.uiproject.app.main.NewDetialFragment;
+import com.pym.uiproject.app.main.model.ContentGson;
 import com.pym.uiproject.base.RxBus;
 import com.pym.uiproject.base.StartFragmentEvent;
 import com.pym.uiproject.base.recycler.RecyclerHeaderFooterAdapter;

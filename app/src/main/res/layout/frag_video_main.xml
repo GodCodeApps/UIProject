@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.pym.uiproject.app.playvideo.vm.VideoListViewModel" />
+    </data>
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -9,17 +16,26 @@
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:enabled="@{vm.refreshable}"
+            app:colorSchemeColors="@{@intArray/colorScheme}"
+            app:onRefreshListener="@{vm}"
+            app:refreshing="@{vm.loading}">
 
-            <com.pym.uiproject.widget.AutoLoadRecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"></com.pym.uiproject.widget.AutoLoadRecyclerView>
+                android:clipToPadding="false"
+                android:padding="4dp"
+                app:adapter="@{vm.adapter}"
+                app:layoutManager="LinearLayoutManager"
+                app:onScrollListener="@{vm.onScrollListener}" />
         </android.support.v4.widget.SwipeRefreshLayout>
+
         <FrameLayout
             android:id="@+id/listPlayContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>

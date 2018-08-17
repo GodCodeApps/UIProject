@@ -1,4 +1,4 @@
-package com.pym.uiproject.app.main;
+package com.pym.uiproject.app.main.model;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class NewHomeInfo {
 
     private String message;
     private int total_number;
-    private boolean has_more;
+    private boolean has_more=true;
     private int login_status;
     private int show_et_status;
     private String post_content_hint;

@@ -1,4 +1,4 @@
-package com.pym.uiproject.app.main;
+package com.pym.uiproject.app.framework;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

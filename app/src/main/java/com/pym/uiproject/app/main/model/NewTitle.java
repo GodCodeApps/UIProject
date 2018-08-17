@@ -1,4 +1,4 @@
-package com.pym.uiproject.app.main;
+package com.pym.uiproject.app.main.model;
 
 import java.util.List;
 

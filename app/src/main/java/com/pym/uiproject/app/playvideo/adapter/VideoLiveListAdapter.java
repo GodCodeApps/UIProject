@@ -1,4 +1,4 @@
-package com.pym.uiproject.app.playvideo;
+package com.pym.uiproject.app.playvideo.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.pym.uiproject.R;
+import com.pym.uiproject.app.playvideo.PlayLiveDetailFragment;
+import com.pym.uiproject.app.playvideo.model.VideoLiveList;
 import com.pym.uiproject.base.RxBus;
 import com.pym.uiproject.base.StartFragmentEvent;
 import com.pym.uiproject.base.recycler.RecyclerHeaderFooterAdapter;

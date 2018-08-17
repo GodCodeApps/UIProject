@@ -19,7 +19,7 @@
         tools:replace="android:allowBackup"
         android:theme="@style/AppTheme"
        >
-        <activity android:name="com.pym.uiproject.app.main.MainActivity"
+        <activity android:name="com.pym.uiproject.app.framework.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
