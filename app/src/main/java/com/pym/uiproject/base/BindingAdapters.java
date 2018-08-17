@@ -12,7 +12,7 @@ import com.pym.uiproject.util.ImageLoader;
 /**
  * 数据绑定适配器
  *
- * @author gavin.xiong 2017/8/15
+ * @author Peng YanMing 2017/8/15
  */
 public class BindingAdapters {
 

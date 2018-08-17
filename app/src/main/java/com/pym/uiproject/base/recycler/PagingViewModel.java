@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * 分页 ViewModel 基类
  *
- * @author gavin.xiong 2017/7/11
+ * @author Peng YanMing 2017/7/11
  */
 public abstract class PagingViewModel<T, A extends RecyclerHeaderFooterAdapter>
         extends FragViewModel<BaseFragment, ViewDataBinding> implements SwipeRefreshLayout.OnRefreshListener {

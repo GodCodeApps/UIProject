@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * DataBinding 基类适配器
  *
- * @author gavin.xiong 2016/12/28
+ * @author Peng YanMing 2016/12/28
  */
 public class BindingHeaderFooterAdapter<T> extends RecyclerHeaderFooterAdapter<T, ViewDataBinding> {
 

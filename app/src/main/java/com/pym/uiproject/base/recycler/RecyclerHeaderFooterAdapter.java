@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Recycler 基类适配器
  *
- * @author gavin.xiong 2017/8/15
+ * @author Peng YanMing 2017/8/15
  */
 public abstract class RecyclerHeaderFooterAdapter<T, B extends ViewDataBinding>
         extends RecyclerView.Adapter<RecyclerHolder> {

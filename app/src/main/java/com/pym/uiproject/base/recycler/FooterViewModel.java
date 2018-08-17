@@ -10,7 +10,7 @@ import com.pym.uiproject.base.BaseViewModel;
 /**
  * 下拉加载更多 ViewModel
  *
- * @author gavin.xiong 2017/8/11
+ * @author Peng YanMing 2017/8/11
  */
 public class FooterViewModel extends BaseViewModel {
 

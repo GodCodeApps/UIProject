@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 /**
  * Fragment ViewModel 基类
  *
- * @author gavin.xiong 2017/8/15
+ * @author Peng YanMing 2017/8/15
  */
 public abstract class FragViewModel<F extends BaseFragment, B extends ViewDataBinding> extends BaseViewModel {
 

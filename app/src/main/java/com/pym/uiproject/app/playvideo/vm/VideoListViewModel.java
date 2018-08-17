@@ -66,13 +66,7 @@ public class VideoListViewModel extends PagingViewModel<VideoLiveList.HomeDivsBe
                         VideoLiveList.HomeDivsBean.FeedsInfoBean feeds_info = homeDivsBean.getFeeds_info();
                         List<VideoLiveList.HomeDivsBean.HomePartitonBean> home_partiton = feeds_info.getHome_partiton();
                         list.addAll(home_partiton);
-                    } else if (mId == 3) {
-                        VideoLiveList.HomeDivsBean homeDivsBean = videoLiveTable.getHome_divs().get(videoLiveTable.getHome_divs().size() - 1);
-                        if (!isMore) list.clear();
-                        VideoLiveList.HomeDivsBean.HomePartitionInfo homePartitionInfo = homeDivsBean.getHome_partition_info();
-                        List<VideoLiveList.HomeDivsBean.HomePartitonBean> homePartiton = homePartitionInfo.getHome_partiton();
-                        list.addAll(homePartiton);
-                    } else if (mId == 15 || mId == 14) {
+                    }  else if (mId == 3||mId == 15 || mId == 14 || mId == 17) {
                         VideoLiveList.HomeDivsBean homeDivsBean = videoLiveTable.getHome_divs().get(videoLiveTable.getHome_divs().size() - 1);
                         if (!isMore) list.clear();
                         VideoLiveList.HomeDivsBean.HomePartitionInfo homePartitionInfo = homeDivsBean.getHome_partition_info();

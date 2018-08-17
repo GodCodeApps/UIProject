@@ -3,7 +3,7 @@ package com.pym.uiproject.base.function;
 /**
  * FlagImpl
  *
- * @author gavin.xiong 2017/8/21
+ * @author Peng YanMing 2017/8/21
  */
 public interface FlagImpl {
 

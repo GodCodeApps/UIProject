@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class L {
 
-	private static final String TAG = "gavin";
+	private static final String TAG = "Ming";
 	private static final String NULL = "<null>";
 	private static final String HEADER = "";
 	private static final String FOOTER = "";

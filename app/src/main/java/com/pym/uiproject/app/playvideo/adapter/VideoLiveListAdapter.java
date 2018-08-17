@@ -49,7 +49,7 @@ public class VideoLiveListAdapter extends RecyclerHeaderFooterAdapter<VideoLiveL
         holder.binding.animationViewiew.playAnimation();
         holder.binding.tvAuth.setText(room_info.getUser_info().getName() + "  " + room_info.getUser_info().getFans_count() + "粉丝");
         ImageLoader.loadCircleImage(holder.binding.imageView, room_info.getUser_info().getAvatar_url());
-        ImageLoader.loadImage(holder.binding.imageViewItem, room_info.getLarge_image().getUrl(), Integer.parseInt(room_info.getLarge_image().getWidth()), Integer.parseInt(room_info.getLarge_image().getHeight()));
+        ImageLoader.loadImage(holder.binding.imageViewItem, room_info.getLarge_image().getUrl().replace("list/190x124", "video1609"), Integer.parseInt(room_info.getLarge_image().getWidth()), Integer.parseInt(room_info.getLarge_image().getHeight()));
         holder.binding.imageViewItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,7 +5,7 @@ import me.yokeyword.fragmentation.SupportFragment;
 /**
  * 回退到指定fragment
  *
- * @author gavin.xiong 2016/12/10
+ * @author Peng YanMing 2016/12/10
  */
 public class PopToFragmentEvent {
 
