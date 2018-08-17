@@ -31,7 +31,7 @@ public class VodeoTitleViewModel extends FragViewModel<PlayVideoFragment, FragPl
         titlePagerAdapter = new TitlePagerAdapter(mFragment.get().getChildFragmentManager(), list);
         mBinding.get().viewPager.setAdapter(titlePagerAdapter);
         mBinding.get().tableLayout.setupWithViewPager(mBinding.get().viewPager);
-        getDataLayer().getDoubanService()
+        getDataLayer().getVideoPlayService()
                 .getVideoLiveTable(mFragment.get())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

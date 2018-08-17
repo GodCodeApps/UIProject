@@ -39,7 +39,7 @@ public class FirstViewModel extends PagingViewModel<ContentGson, NewMutAdapter> 
     @SuppressLint("CheckResult")
     @Override
     protected void getData(boolean isMore) {
-        getDataLayer().getDoubanService().getNewHomeList(mFragment.get(), 1)
+        getDataLayer().getNewService().getNewHomeList(mFragment.get(), 1)
                 .delay(500, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(disposable -> {

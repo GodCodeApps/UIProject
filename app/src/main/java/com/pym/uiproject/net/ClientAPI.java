@@ -53,10 +53,12 @@ public interface ClientAPI {
     // &update_version_code=66404
     // &_rticket=1533708507711
     // &rom_version=Funtouch+OS_3.2_PD1709_A_1.14.3
-
+    /**
+     * 获取新闻列表
+     */
     @FormUrlEncoded
     @POST("video/app/stream/v51/?")
-    Observable<NewHomeInfo> getVideoListInfo(@Field("device_id") String device_id,
+    Observable<NewHomeInfo> getNewListInfo(@Field("device_id") String device_id,
                                              @Field("ac") String ac,
                                              @Field("channel") String channel,
                                              @Field("aid") String aid,

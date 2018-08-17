@@ -1,7 +1,7 @@
 package com.pym.uiproject.inject.module;
 
-import com.pym.uiproject.service.DoubanManager;
-import com.pym.uiproject.service.GankManager;
+import com.pym.uiproject.service.NewManager;
+import com.pym.uiproject.service.VideoServiceManager;
 import com.pym.uiproject.service.base.DataLayer;
 
 import javax.inject.Singleton;
@@ -18,19 +18,19 @@ import dagger.Provides;
 public class DataLayerModule {
     @Singleton
     @Provides
-    public GankManager provideGankManager() {
-        return new GankManager();
+    public VideoServiceManager provideVideoServiceManager() {
+        return new VideoServiceManager();
     }
 
     @Singleton
     @Provides
-    public DoubanManager provideDoubanManager() {
-        return new DoubanManager();
+    public NewManager provideDoubanManager() {
+        return new NewManager();
     }
 
     @Singleton
     @Provides
-    public DataLayer provideDataLayer(GankManager gankManager,DoubanManager doubanManager) {
-        return new DataLayer(gankManager, doubanManager);
+    public DataLayer provideDataLayer(VideoServiceManager VideoServiceManager,NewManager doubanManager) {
+        return new DataLayer(VideoServiceManager, doubanManager);
     }
 }

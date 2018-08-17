@@ -32,7 +32,7 @@ public class VideoListViewModel extends PagingViewModel<VideoLiveList.HomeDivsBe
 
     @Override
     protected void getData(boolean isMore) {
-        getDataLayer().getDoubanService().getVideoLiveList(mFragment.get(), mId, isMore ? 1 : 0,  isMore ? pagingOffset + 1 : 1)
+        getDataLayer().getVideoPlayService().getVideoLiveList(mFragment.get(), mId, isMore ? 1 : 0,  isMore ? pagingOffset + 1 : 1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> {
