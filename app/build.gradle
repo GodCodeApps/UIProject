@@ -25,7 +25,7 @@ android {
     }
     greendao {
         schemaVersion 1
-        daoPackage 'gavin.sensual.db.dao'
+        daoPackage 'com.pym.uiproject.db.dao'
         targetGenDir 'src/main/java'
     }
     configurations.all {

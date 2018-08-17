@@ -47,7 +47,7 @@ public class PlayLiveDetailFragment extends BindingFragment<FragPlayLiveDetailBi
     @Override
     public void onPause() {
         super.onPause();
-        AssistPlayer.get().pause();
+//        AssistPlayer.get().pause();
     }
 
     @Override
