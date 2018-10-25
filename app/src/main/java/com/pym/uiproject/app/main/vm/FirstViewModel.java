@@ -65,9 +65,9 @@ public class FirstViewModel extends PagingViewModel<ContentGson, NewMutAdapter> 
                             NewHomeInfo.DataBean dataBean = data.get(i);
                             String content = dataBean.getContent();
                             ContentGson contentGson = JsonUtil.toObj(content, ContentGson.class);
-                            if (contentGson.isHas_image()) {
+                            //if (contentGson.isHas_image()) {
                                 results.add(contentGson);
-                            }
+                           // }
                         }
                     }
                     accept(isMore, results);

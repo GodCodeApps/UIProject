@@ -32,10 +32,5 @@
                 app:layoutManager="LinearLayoutManager"
                 app:onScrollListener="@{vm.onScrollListener}" />
         </android.support.v4.widget.SwipeRefreshLayout>
-
-        <FrameLayout
-            android:id="@+id/listPlayContainer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>
