@@ -58,7 +58,7 @@ public class PlayLiveDetailFragment extends BindingFragment<FragPlayLiveDetailBi
 
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
-        DataSource dataSource = new DataSource(infoBean.getLive_info().getStream_url().getPullUrl().getFULL_HD1().getHls());
+        DataSource dataSource = new DataSource(infoBean.getLive_info().getStream_url().getAlternate_pull_url());
         AssistPlayer.get().play(mBinding.frameVideo, dataSource);
         if(infoBean.getLive_info().getOrientation()==0){
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);

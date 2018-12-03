@@ -36,10 +36,9 @@ public class FirstViewModel extends PagingViewModel<ContentGson, NewMutAdapter> 
         super.afterCreate();
     }
 
-    @SuppressLint("CheckResult")
     @Override
     protected void getData(boolean isMore) {
-        getDataLayer().getNewService().getNewHomeList(mFragment.get(), 1)
+        getDataLayer().getNewService().getNewHomeList(mFragment.get(), pagingOffset)
                 .delay(500, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(disposable -> {
@@ -54,6 +53,7 @@ public class FirstViewModel extends PagingViewModel<ContentGson, NewMutAdapter> 
                 .doOnError(e -> {
                     doOnError(isMore, e);
                 })
+
                 .doOnNext(image -> {
                     pagingHaveMore = image.isHas_more();
                 })

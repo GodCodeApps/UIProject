@@ -7,13 +7,13 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.3'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.8-RC1'
     }
 }
 
-allprojects {
+allprojects {libRxJava
     repositories {
         google()
         jcenter()
