@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.pym.uiproject">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 读取设备上的内容 -->
@@ -16,10 +17,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        tools:replace="android:allowBackup"
         android:theme="@style/AppTheme"
-       >
-        <activity android:name="com.pym.uiproject.app.framework.MainActivity"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name="com.pym.uiproject.app.framework.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

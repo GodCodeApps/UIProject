@@ -18,10 +18,6 @@ import java.util.List;
  * Peng YanMing on 2018\8\6 0006
  */
 public class VideoPlayMainFragment extends BindingFragment<FragVideoMainBinding, VideoListViewModel> {
-    private int id;
-    private List<VideoLiveList.HomeDivsBean.HomePartitonBean> list;
-    private VideoLiveListAdapter listAdapter;
-
     @Override
     protected int getLayoutId() {
         return R.layout.frag_video_main;
