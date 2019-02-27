@@ -20,6 +20,7 @@ public class FirstFragment extends BindingFragment<FragFirstBinding, FirstViewMo
         return R.layout.frag_first;
     }
 
+
     @SuppressLint("CheckResult")
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
