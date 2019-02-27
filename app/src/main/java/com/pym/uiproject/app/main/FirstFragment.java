@@ -21,6 +21,8 @@ public class FirstFragment extends BindingFragment<FragFirstBinding, FirstViewMo
     }
 
 
+
+
     @SuppressLint("CheckResult")
     @Override
     protected void afterCreate(@Nullable Bundle savedInstanceState) {
